@@ -1,16 +1,12 @@
+apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 
-androidExtensions{
-    experimental = true
-}
 
 
 android {
     compileSdkVersion Versions.compileSdkVersion
-    buildToolsVersion Versions.buildTool
     defaultConfig {
         minSdkVersion Versions.minSdk
         targetSdkVersion Versions.targetSdk
@@ -33,10 +29,6 @@ android {
         }
     }
 
-    dataBinding {
-        enabled true
-    }
-
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -46,8 +38,24 @@ android {
     }
 
     compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion Versions.compose_version
+        kotlinCompilerVersion Versions.kotlinVersion
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 }
 
@@ -58,8 +66,40 @@ dependencies {
     implementation KotlinLibraries.kotlin
     implementation AndroidLibraries.ktxCore
 
-    implementation TestLibraries.androidTestRunner
-    implementation TestLibraries.junit
-    implementation TestLibraries.espressoCore
-    implementation TestLibraries.espressoContrib
+    implementation DependenciesInjection.hilt
+    implementation DependenciesInjection.hiltJetpack
+    kapt DependenciesInjection.hiltCompiler
+    kapt DependenciesInjection.hiltJetpackCompiler
+
+    //coroutine
+    implementation KotlinLibraries.coreKotlinCoroutine
+    implementation KotlinLibraries.androidKotlinCoroutine
+
+    // For instrumentation tests
+    androidTestImplementation DependenciesInjection.hiltAndroidTest
+    kaptAndroidTest DependenciesInjection.hiltAndroidTestCompiler
+
+    // For local unit tests
+    testImplementation DependenciesInjection.hiltAndroidUnitTest
+    kaptTest DependenciesInjection.hiltAndroidUnitTestCompiler
+
+
+    androidTestImplementation TestLibraries.androidTestRunner
+    androidTestImplementation TestLibraries.junit
+    androidTestImplementation TestLibraries.espressoCore
+    androidTestImplementation TestLibraries.espressoContrib
+
+    androidTestImplementation TestLibraries.compose_test_junit
+    androidTestImplementation TestLibraries.compose_test_ui_tooling
+}
+repositories {
+    google()
+    jcenter()
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+    maven { url "https://maven.google.com" }
+    maven {
+        allowInsecureProtocol(true)
+        url 'http://raw.github.com/saki4510t/libcommon/master/repository/'
+    }
 }
