@@ -14,6 +14,4 @@ object DataModule {
     @Provides
     @Singleton
     internal fun provideDispatcherProvider(): DispatcherProvider = DefaultDispatcherProvider()
-
-
 }

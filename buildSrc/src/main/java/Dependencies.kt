@@ -3,8 +3,11 @@ object ApplicationId{
 }
 
 object Modules{
-    val Core = ":core"
-    val Domain = ":domain"
+    val data = ":data"
+    val domain = ":domain"
+
+    //features
+    val microlife = ":features:microlife"
 }
 
 object Releases{
