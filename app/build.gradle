@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.android'
 
 }
 
@@ -13,6 +14,14 @@ android {
 
     defaultConfig {
         applicationId ApplicationId.id
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion Versions.compose_version
+        kotlinCompilerVersion Versions.kotlinVersion
+
     }
 }
 
@@ -30,6 +39,8 @@ dependencies {
     implementation Compose.compose_ui_material
     implementation Compose.compose_ui_preview
     implementation Compose.compose_ui_activity
+    implementation Compose.composeViewModel
+    implementation Compose.composeLiveDataRuntime
 
 
     implementation LifeCycle.lifeCycleRuntimeKtx

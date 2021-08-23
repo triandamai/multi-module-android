@@ -20,3 +20,5 @@ include ':buildsrc'
 include ':data'
 include ':domain'
 include ':features:microlife'
+include ':common'
+

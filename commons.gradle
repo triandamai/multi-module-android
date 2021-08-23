@@ -45,13 +45,7 @@ android {
         jvmTarget = '1.8'
         useIR = true
     }
-    buildFeatures {
-        compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion Versions.compose_version
-        kotlinCompilerVersion Versions.kotlinVersion
-    }
+
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
@@ -71,6 +65,8 @@ dependencies {
     kapt DependenciesInjection.hiltCompiler
     kapt DependenciesInjection.hiltJetpackCompiler
 
+//    implementation Compose.composeRuntime
+//    implementation Compose.composeRuntimeLiveData
     //coroutine
     implementation KotlinLibraries.coreKotlinCoroutine
     implementation KotlinLibraries.androidKotlinCoroutine

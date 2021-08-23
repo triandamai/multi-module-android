@@ -1,5 +1,6 @@
 package com.trian.module
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,6 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.trian.microlife.BloodPressureActivity
 import com.trian.module.ui.theme.TesMultiModuleTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,6 +25,8 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+        startActivity(Intent(this,BloodPressureActivity::class.java))
+
     }
 }
 

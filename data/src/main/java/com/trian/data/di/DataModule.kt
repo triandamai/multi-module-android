@@ -2,16 +2,34 @@ package com.trian.data.di
 
 import com.trian.data.coroutines.DefaultDispatcherProvider
 import com.trian.data.coroutines.DispatcherProvider
+import com.trian.data.local.room.CexupDatabase
+import com.trian.data.remote.RemoteDataSource
+import com.trian.data.repository.CexupRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import io.ktor.client.*
 
-@InstallIn(SingletonComponent::class)
+
 @Module
+@InstallIn(SingletonComponent::class,ActivityComponent::class)
 object DataModule {
     @Provides
-    @Singleton
     internal fun provideDispatcherProvider(): DispatcherProvider = DefaultDispatcherProvider()
+
+    @Provides
+    fun provideRemoteDataSource():RemoteDataSource{
+        return RemoteDataSource()
+    }
+
+    @Provides
+    fun provideRepository(
+        dispatcherProvider: DispatcherProvider,
+        remoteDataSource: RemoteDataSource,
+        database: CexupDatabase
+    ):CexupRepository{
+        return CexupRepository(dispatcherProvider,database,remoteDataSource)
+    }
 }

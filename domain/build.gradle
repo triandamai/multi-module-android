@@ -13,6 +13,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation project(Modules.common)
+
     implementation Network.ktorAndroid
     implementation Network.ktorSerialization
     implementation Network.kotlinSerialization

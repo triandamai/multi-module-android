@@ -5,6 +5,8 @@ object ApplicationId{
 object Modules{
     val data = ":data"
     val domain = ":domain"
+    val common = ":common"
+    val presentation = ":presentation"
 
     //features
     val microlife = ":features:microlife"
@@ -30,10 +32,12 @@ object Versions {
     val hiltJetpackVersion = "1.0.0-alpha02"
     val hiltVersion = "2.38.1"
     val roomVersion = "2.2.5"
+    val lifecycle = "2.2.0"
+    val dagger = "2.24"
 }
 
 object DependenciesInjection{
-
+    // Dagger core
 
     /**
      * HILT
@@ -43,6 +47,7 @@ object DependenciesInjection{
     val hiltJetpack = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltJetpackVersion}"
     val hiltJetpackCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltJetpackVersion}"
 
+
     // For instrumentation tests
     val hiltAndroidTest = "com.google.dagger:hilt-android-testing:${Versions.hiltVersion}"
     val hiltAndroidTestCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}"
@@ -50,12 +55,16 @@ object DependenciesInjection{
     // For local unit tests
     val hiltAndroidUnitTest = "com.google.dagger:hilt-android-testing:${Versions.hiltVersion}"
     val hiltAndroidUnitTestCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}"
-}
+
+   }
 object Compose{
     val compose_ui = "androidx.compose.ui:ui:${Versions.compose_version}"
     val compose_ui_material ="androidx.compose.material:material:${Versions.compose_version}"
     val compose_ui_preview ="androidx.compose.ui:ui-tooling-preview:${Versions.compose_version}"
     val compose_ui_activity =  "androidx.activity:activity-compose:1.3.1"
+    val composeViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
+val composeLiveDataRuntime = "androidx.compose.runtime:runtime-livedata:${Versions.compose_version}"
+
 
 }
 
@@ -82,6 +91,11 @@ object AndroidLibraries {
     private const val ktx_core = "1.6.0"
     private const val appcompat = "1.3.1"
     private const val material = "1.1.0"
+
+    val dagger2 = "com.google.dagger:dagger:${Versions.dagger}"
+    val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+
+
     val ktxCore= "androidx.core:core-ktx:$ktx_core"
     val androidMaterial ="com.google.android.material:material:$material"
     val appCompat =  "androidx.appcompat:appcompat:$appcompat"
@@ -92,6 +106,11 @@ object AndroidLibraries {
 
     // optional - Kotlin Extensions and Coroutines support for Room
     val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"
+    val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+    val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+    val lifecycleCompile = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
+    val lifecycleLivedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
+
 }
 
 object TestLibraries {
