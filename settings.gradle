@@ -1,0 +1,5 @@
+
+rootProject.name = "Tes Multi Module"
+include ':app'
+include ':buildsrc'
+
