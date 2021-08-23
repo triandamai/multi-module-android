@@ -26,6 +26,7 @@ object Versions {
     val hiltGradlePluginVersion = "2.38.1"
     val hiltJetpackVersion = "1.0.0-alpha02"
     val hiltVersion = "2.38.1"
+    val roomVersion = "2.2.5"
 }
 
 object DependenciesInjection{
@@ -81,6 +82,13 @@ object AndroidLibraries {
     val ktxCore= "androidx.core:core-ktx:$ktx_core"
     val androidMaterial ="com.google.android.material:material:$material"
     val appCompat =  "androidx.appcompat:appcompat:$appcompat"
+
+    // ROOM
+    val room = "androidx.room:room-runtime:${Versions.roomVersion}"
+    val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"
 }
 
 object TestLibraries {
