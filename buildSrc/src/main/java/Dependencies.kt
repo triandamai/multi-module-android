@@ -72,7 +72,8 @@ object Network{
     private const val ktor_version = "1.5.0"
     val ktorAndroid = "io.ktor:ktor-client-android:$ktor_version"
     val ktorSerialization = "io.ktor:ktor-client-serialization:$ktor_version"
-    val kotlinSerialization =  "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"
+    val ktorGson= "io.ktor:ktor-client-gson:$ktor_version"
+
     val ktorLogger = "io.ktor:ktor-client-logging-jvm:1.5.0"
 }
 object KotlinLibraries {

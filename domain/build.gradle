@@ -17,7 +17,7 @@ dependencies {
 
     implementation Network.ktorAndroid
     implementation Network.ktorSerialization
-    implementation Network.kotlinSerialization
+    implementation Network.ktorGson
     implementation Network.ktorLogger
     api AndroidLibraries.room
     api AndroidLibraries.roomKtx
