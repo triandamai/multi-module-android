@@ -31,6 +31,7 @@ dependencies {
     implementation project(Modules.data)
     implementation project(Modules.domain)
     implementation project(Modules.microlife)
+    implementation project(Modules.common)
 
     implementation AndroidLibraries.appCompat
     implementation AndroidLibraries.androidMaterial
@@ -39,6 +40,7 @@ dependencies {
     implementation Compose.compose_ui_material
     implementation Compose.compose_ui_preview
     implementation Compose.compose_ui_activity
+    implementation Compose.composeNavigation
     implementation Compose.composeViewModel
     implementation Compose.composeLiveDataRuntime
 

@@ -9,6 +9,7 @@ import com.trian.domain.entities.User
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.withContext
 
 class CexupRepository(
     private val dispatcherProvider: DispatcherProvider,
@@ -22,7 +23,7 @@ class CexupRepository(
             fetch = {remoteDataSource.getAllUsers()},
             saveFetchResult = {
                 response ->
-                cexupDatabase.userDao().insert(response.data!!)
+             //   cexupDatabase.userDao().insert(response.data!!)
 
             },
             clearData = {}
@@ -31,5 +32,9 @@ class CexupRepository(
 
     private fun fetchLocalUsers():Flow<List<User>> = flow {
         emit(cexupDatabase.userDao().getAll())
+    }
+
+    suspend fun fetchAllUsers():NetworkStatus<List<User>> {
+          return  remoteDataSource.getAllUsers()
     }
 }

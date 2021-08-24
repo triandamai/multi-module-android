@@ -63,8 +63,8 @@ object Compose{
     val compose_ui_preview ="androidx.compose.ui:ui-tooling-preview:${Versions.compose_version}"
     val compose_ui_activity =  "androidx.activity:activity-compose:1.3.1"
     val composeViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
-val composeLiveDataRuntime = "androidx.compose.runtime:runtime-livedata:${Versions.compose_version}"
-
+    val composeLiveDataRuntime = "androidx.compose.runtime:runtime-livedata:${Versions.compose_version}"
+    val composeNavigation = "androidx.navigation:navigation-compose:2.4.0-alpha07"
 
 }
 

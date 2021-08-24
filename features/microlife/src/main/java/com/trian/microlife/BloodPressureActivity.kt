@@ -1,6 +1,7 @@
 package com.trian.microlife
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -43,22 +44,16 @@ class BloodPressureActivity : AppCompatActivity() {
 @Composable
 fun Greeting(viewModels: UserViewModel = viewModel()) {
 val example = viewModels.nameLiveData.observeAsState()
-val users = viewModels.users().observeAsState()
+val status = viewModels.statusLiveData.observeAsState()
 Column {
     example.value?.let { Text(text = "Hello ${it}!") }
-
-    when(users.value){
-        is NetworkStatus.Loading->{
-            Text(text = "Loading")
-        }
-        is NetworkStatus.Success->{
-            Text(text = "Success")
-        }
-        is NetworkStatus.Error->{
-            Text(text = "Error")
-        }
+    status.value?.let {
+        Text(text = "Status ${it}!")
     }
-    Button(onClick = { viewModels.tes("hai")  }) {
+    Button(onClick = {
+        viewModels.users()
+
+    }) {
         Text(text = "Klik")
     }
 }

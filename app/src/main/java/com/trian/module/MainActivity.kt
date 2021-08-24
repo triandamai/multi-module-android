@@ -9,7 +9,14 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.trian.common.utils.route.Routes
 import com.trian.microlife.BloodPressureActivity
+import com.trian.module.ui.pages.PageDashboard
+import com.trian.module.ui.pages.PageOnBoarding
+import com.trian.module.ui.pages.PageSplashScreen
 import com.trian.module.ui.theme.TesMultiModuleTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,16 +24,29 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             TesMultiModuleTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                val navHostController = rememberNavController()
+                NavHost(navController =navHostController,startDestination = Routes.SPLASH.name){
+                    composable(Routes.SPLASH.name){
+                        PageSplashScreen()
+                    }
+                    composable(Routes.ONBOARD.name){
+                        PageOnBoarding()
+                    }
+                    composable(Routes.DASHBOARD.name){
+                        PageDashboard()
+                    }
                 }
             }
         }
-        startActivity(Intent(this,BloodPressureActivity::class.java))
 
+
+    }
+
+    fun toMicrolife(){
+        startActivity(Intent(this,BloodPressureActivity::class.java))
     }
 }
 
