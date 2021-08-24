@@ -3,19 +3,17 @@ package com.trian.data.remote
 import android.util.Log
 import com.trian.common.utils.network.NetworkStatus
 import com.trian.data.utils.safeApiCall
-import com.trian.domain.entities.Users
+import com.trian.domain.BaseResponse
+import com.trian.domain.entities.User
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
 import io.ktor.client.features.*
 import io.ktor.client.features.json.*
-import io.ktor.client.features.json.serializer.*
 import io.ktor.client.features.logging.*
 import io.ktor.client.features.observer.*
 import io.ktor.client.request.*
-import io.ktor.client.statement.*
 import io.ktor.http.*
-import kotlinx.serialization.json.Json
-import org.json.JSONObject
+
 
 class RemoteDataSource() {
 
@@ -51,8 +49,9 @@ class RemoteDataSource() {
         install(DefaultRequest) {
             header(HttpHeaders.ContentType, ContentType.Application.Json)
         }
+
     }
-     suspend fun getAllUsers(): NetworkStatus<List<Users>> {
-        return safeApiCall { ktorHttpClient.get<HttpResponse>("") }
+     suspend fun getAllUsers(): NetworkStatus<List<User>> {
+        return safeApiCall { ktorHttpClient.get<BaseResponse<List<User>>>("") }
     }
 }

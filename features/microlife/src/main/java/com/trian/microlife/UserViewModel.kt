@@ -5,7 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import com.trian.common.utils.network.NetworkStatus
 import com.trian.data.repository.CexupRepository
+import com.trian.domain.entities.User
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -22,7 +25,12 @@ class UserViewModel @Inject constructor(
         Log.e("VM","${cexupRepository}")
     }
     fun tes(name:String){
-        nama.value = name
+        nama.value = "$name -> ${System.currentTimeMillis()}"
         Log.e("VM","${cexupRepository}")
+    }
+
+    fun users():LiveData<NetworkStatus<List<User>>> = liveData{
+        emit(NetworkStatus.Loading())
+
     }
 }

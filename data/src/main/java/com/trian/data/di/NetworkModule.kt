@@ -1,6 +1,7 @@
 package com.trian.data.di
 
 import com.google.gson.Gson
+import com.trian.data.remote.RemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,5 +12,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class, ActivityComponent::class)
 object NetworkModule {
     @Provides
-    fun provideGson():Gson = Gson()
+    fun provideRemoteDataSource(): RemoteDataSource {
+        return RemoteDataSource()
+    }
 }

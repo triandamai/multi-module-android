@@ -2,10 +2,10 @@ package com.trian.data.local.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.trian.domain.entities.Users
+import com.trian.domain.entities.User
 
 @Database(
-    entities = [Users::class],
+    entities = [User::class],
     version = 1,
     exportSchema = false
 )

@@ -15,6 +15,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.trian.common.utils.network.NetworkStatus
 
 
 import com.trian.microlife.ui.theme.TesMultiModuleTheme
@@ -42,9 +43,21 @@ class BloodPressureActivity : AppCompatActivity() {
 @Composable
 fun Greeting(viewModels: UserViewModel = viewModel()) {
 val example = viewModels.nameLiveData.observeAsState()
+val users = viewModels.users().observeAsState()
 Column {
     example.value?.let { Text(text = "Hello ${it}!") }
 
+    when(users.value){
+        is NetworkStatus.Loading->{
+            Text(text = "Loading")
+        }
+        is NetworkStatus.Success->{
+            Text(text = "Success")
+        }
+        is NetworkStatus.Error->{
+            Text(text = "Error")
+        }
+    }
     Button(onClick = { viewModels.tes("hai")  }) {
         Text(text = "Klik")
     }

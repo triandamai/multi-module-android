@@ -19,10 +19,6 @@ object DataModule {
     @Provides
     internal fun provideDispatcherProvider(): DispatcherProvider = DefaultDispatcherProvider()
 
-    @Provides
-    fun provideRemoteDataSource():RemoteDataSource{
-        return RemoteDataSource()
-    }
 
     @Provides
     fun provideRepository(

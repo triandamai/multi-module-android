@@ -25,9 +25,15 @@ dependencies {
 
     implementation project(Modules.data)
     implementation project(Modules.common)
+    implementation project(Modules.domain)
 
     implementation AndroidLibraries.appCompat
     implementation AndroidLibraries.androidMaterial
+    implementation AndroidLibraries.lifecycleViewModel
+    implementation AndroidLibraries.lifecycleExtensions
+    implementation AndroidLibraries.lifecycleLivedata
+    kapt AndroidLibraries.lifecycleCompile
+
 
     implementation Compose.compose_ui
     implementation Compose.compose_ui_material
